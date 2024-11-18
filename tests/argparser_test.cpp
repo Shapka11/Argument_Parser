@@ -199,7 +199,7 @@ TEST(ArgParserTestSuite, HelpStringTest) {
     parser.AddStringArgument('i', "input", "File path for input file").MultiValue(1);
     parser.AddFlag('s', "flag1", "Use some logic").Default(true);
     parser.AddFlag('p', "flag2", "Use some logic");
-    parser.AddIntArgument("numer", "Some Number");
+    parser.AddIntArgument("number", "Some Number");
 
 
     ASSERT_TRUE(parser.Parse(SplitString("app --help")));
