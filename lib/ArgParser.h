@@ -1,8 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <string>
 #include <unordered_map>
+#include <vector>
 
 namespace ArgumentParser {
 
@@ -54,27 +55,27 @@ private:
     std::string name_parser_;
 
     struct NodeString {
-        std::vector<std::string> vec;
-        std::vector<std::string>* to_vec = nullptr;
+        std::vector<std::string> vector_str;
+        std::vector<std::string>* p_vector_str = nullptr;
         std::string value;
-        std::string* to_str = &value;
-        bool is_val = false;
+        std::string* p_str = &value;
+        bool is_value = false;
     };
 
     struct NodeInt {
-        std::vector<int> vec;
-        std::vector<int>* to_vec = nullptr;
+        std::vector<int> vector_int;
+        std::vector<int>* p_vector_int = nullptr;
         int value;
-        int* to_int = &value;
-        bool is_val = false;
+        int* p_int = &value;
+        bool is_value = false;
     };
 
     struct NodeFlag {
-        std::vector<bool> vec;
-        std::vector<bool>* to_vec = nullptr;
+        std::vector<bool> vector_bool;
+        std::vector<bool>* p_vector_bool = nullptr;
         bool flag;
-        bool* to_flag = &flag;
-        bool is_val = false;
+        bool* p_flag = &flag;
+        bool is_value = false;
     };
 
     struct NodeHelpInfo {
@@ -93,12 +94,12 @@ private:
     std::vector<std::string> curr_key_;
     std::vector<std::string> res_help_val_;
     std::vector<NodeHelpInfo*> help_info_;
-    int index_help_vec_ = -1;
+    int index_help_info_vector_ = -1;
 
-    std::unordered_map <std::string, NodeString*> map_str_;
-    std::unordered_map <std::string, NodeInt*> map_int_;
-    std::unordered_map <std::string, NodeFlag*> map_flag_;
-    std::unordered_map <std::string, size_t> multi_value_;
+    std::unordered_map<std::string, NodeString*> map_str_;
+    std::unordered_map<std::string, NodeInt*> map_int_;
+    std::unordered_map<std::string, NodeFlag*> map_flag_;
+    std::unordered_map<std::string, size_t> map_multi_value_;
 
     ArgParser& AddString(const std::string& long_name, const std::string& description, NodeString* new_node);
     ArgParser& AddInt(const std::string& long_name, const std::string& description, NodeInt* new_node);
